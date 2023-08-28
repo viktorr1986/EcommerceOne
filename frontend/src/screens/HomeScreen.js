@@ -22,7 +22,7 @@ function HomeScreen() {
 
         dispatch(listProducts())
 
-    }, [dispatch])
+    }, [dispatch])  // se le agrega match
 
     return (
         <div>

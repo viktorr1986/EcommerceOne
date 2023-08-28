@@ -1,0 +1,79 @@
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../Constants/cartConstants'
+
+
+export const cartReducer = (state = { cartItmes: [] }, action) => {
+    
+    switch (action.type) {
+        case CART_ADD_ITEM:
+            const item = action.payload
+            const existItem = state.cartItmes.find((x) => x.product === item.product)
+            
+            if(existItem){
+                return {
+                    ...state, 
+                    cartItmes: state.cartItmes.map((x) => 
+                        x.product === existItem.product ? item  : x)
+                }
+            }else {
+                return{
+                    ...state,
+                    cartItmes: [...state.cartItmes, item]
+                }
+            }
+
+        case CART_REMOVE_ITEM:
+            return{
+                ...state, 
+                cartItmes:state.cartItmes.filter(x => x.product !== action.payload)
+            }
+        default:
+            return state
+    }
+}
+
+/*
+import {  CART_ADD_ITEM  } from "../constants/cartConstants"
+
+
+
+
+export const cartReducer = (state = { cartItems: [] }, action) => {
+    switch (action.type) {
+        case CART_ADD_ITEM:
+           
+            const item = action.payload
+            const existItem = state.cartItems.find(x => {
+                if(x == null){
+                    return false;
+                }else{
+                    return x.product === item.product;
+                }
+
+
+            })
+
+            if(existItem){
+                return {
+                    ...state,
+                    cartItems: state.cartItems.map(x => {
+                      if (x != null) {
+                        return x.product === existItem.product ? item : x
+                      } else {
+                        return x
+                      
+                      }
+                    })
+                }
+
+
+            }
+        
+        default:
+            return state;
+
+    }
+
+
+
+}
+*/

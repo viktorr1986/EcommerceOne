@@ -1,3 +1,9 @@
 usuario: victor
 email: huggovhrg@
 password: 12345
+
+
+PS C:\Users\Asus\ProyectoEcomerce> virtualenv myenv 
+PS C:\Users\Asus\ProyectoEcomerce> myenv\scritps\activate
+PS C:\Users\Asus\ProyectoEcomerce>cd backend
+PS C:\Users\Asus\ProyectoEcomerce\backend> pyhton manage.py runserver
